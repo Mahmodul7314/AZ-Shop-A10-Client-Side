@@ -1,0 +1,32 @@
+ [
+  {
+    "id": 1,
+    "brandName": "Amazon",
+    "imageurl": "https://i.ibb.co/d6v91z2/Chris-on-X.jpg"
+  },
+  {
+    "id": 2,
+    "brandName": "Walmart",
+    "imageurl": "https://i.ibb.co/GHLkGzm/Graphic-Designer-Replaces-Wordmarks-In-Famous-Logos-With-The-Fonts-They-Use.jpg"
+  },
+  {
+    "id": 3,
+    "brandName": "Alibaba",
+    "imageurl": "https://i.ibb.co/hf2HQBP/alibaba.jpg"
+  },
+  {
+    "id": 4,
+    "brandName": "eBay",
+    "imageurl": "https://i.ibb.co/9ZCMC42/The-6-Best-Apps-for-Selling-Stuff-in-2022.jpg"
+  },
+  {
+    "id": 5,
+    "brandName": "Target",
+    "imageurl": "https://i.ibb.co/ScBm2Rc/The-Happiest-Brands-In-the-World.jpg"
+  },
+  {
+    "id": 6,
+    "brandName": "Best-Buy",
+    "imageurl": "https://i.ibb.co/hXxTWhB/Home.jpg"
+  }
+]
