@@ -3,24 +3,13 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import ProductItem from "../ProductItem/ProductItem";
 
 const BrandCard = ({brandData}) => {
    const {id,brandName,imageurl} = brandData;
-   const [productData, setProductData]=useState([]);
 
-   const handleShortProduct =brandName=>{
- 
-    fetch(`http://localhost:5000/product/${brandName}`)
-    .then(res => res.json())
-    .then((data) => {
-        console.log(data)
-        setProductData(data)
-      
-    })
-   }
-   console.log(productData)
     return (
-        <Link to={'/productItem'} onClick={()=>handleShortProduct(brandName)}  className="mt-12">
+        <Link to={`/productItem/${brandName}`}  className="mt-12">
          <div className="card w-full bg-blue-200 shadow-xl">
             <figure className="px-10 pt-10">
                 <img src={imageurl} alt="brand_image" className="rounded-xl" />
@@ -29,7 +18,7 @@ const BrandCard = ({brandData}) => {
                  <h2 className="card-title">{brandName}</h2>
             </div>
             </div>
-                        
+                     
             </Link>
         );
 };
