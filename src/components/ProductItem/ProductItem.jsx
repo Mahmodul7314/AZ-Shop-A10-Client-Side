@@ -8,7 +8,6 @@ const ProductItem = () => {
 const [products, setProducts]= useState([]);
 const {data} = useParams();
 const brandName = data;
-console.log(brandName)
 
 useEffect(()=>{
     fetch(`http://localhost:5000/product/${brandName}`)

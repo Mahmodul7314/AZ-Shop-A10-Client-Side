@@ -1,7 +1,9 @@
+import { data } from "autoprefixer";
 import {BsCurrencyDollar} from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const ProductShow = ({product}) => {
-    const {name, brandName, price, shortDescription, rating, photo, fullDescription}= product
+    const {_id,name, brandName, price, shortDescription, rating, photo, fullDescription}= product
 
     return (
         <div className="h-[90vh]" >
@@ -39,11 +41,11 @@ const ProductShow = ({product}) => {
 
 </p>
                
-                </div>
+          </div>
                 <p className="text-sm font-normal">{shortDescription}</p>
                 <div className="lg:flex justify-around mt-3 ">
-                <button className=" bg-blue-400 text-white w-24 rounded-sm h-8 hover:bg-gray-200 hover:text-black">Details</button>
-                <button className=" bg-pink-400 text-white w-24  rounded-sm h-8 hover:bg-gray-200 hover:text-black">Update</button>
+                <Link to={`/productDetail`} className=" bg-blue-500 text-white w-24 rounded-sm h-8 hover:bg-slate-200 hover:text-black">Details</Link>
+                <button className=" bg-pink-500 text-white w-24  rounded-sm h-8 hover:bg-slate-200 hover:text-black">Update</button>
                 </div>
             </div>
             </div>

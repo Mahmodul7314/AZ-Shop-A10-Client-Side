@@ -1,7 +1,15 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import AuthProvider, { AuthContext } from "../../firebase/AuthProvider";
 
 
 const Navbar = () => {
+  const {user, logOut } = useContext(AuthContext);
+  const handlLogout=()=>{
+    logOut()
+    .then()
+    .catch();
+  }
 
 const NavLinks = <>
      <li><NavLink
@@ -53,34 +61,28 @@ const NavLinks = <>
                 </div>
                 </div>
                 <div className="navbar-end w-1/2">
-                   <div>Login</div>
-                {/* { user? <> 
-             <div className=" gap-2 lg:pr-6 pr-2 flex lg:flex lg:items-center">
-             <p className="text-sm lg:font-bold font-normal"> {user.displayName}<br /></p>
-              <div ><img className="lg:w-12 w-12 h-8 lg:h-12 rounded-full" src={user.photoURL} alt="" /></div>
-              </div>
-             
-           <button className="btn btn-error w-16 h-4 text-black lg:font-extrabold font-normal hover:text-black hover:bg-red-500" onClick={handleLogOut} >
-           <div
-            className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active text-red-500 font-extrabold lg:px-4 px-2 lg:py-4 py-2" : " text-black font-extrabold"
-           }
-          >
-           LogOut
-           </div>
-           </button>
-              </>
-              :
-              <button className="btn btn-neutral">
-              <NavLink
-              to="/login"
-              className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "active text-red-500 font-extrabold px-4 py-4 pr-6" : "font-extrabold"
-              }
-            >
-              Login
-              </NavLink>
-              </button>} */}
+                  {
+                    user? <> <div> <img className="w-24-h-20 rounde-full pr-6 bg-slate-200" src={user.image} alt="" /><p>{user.email}</p></div>
+                    <div onClick={ handlLogout} className=" bg-blue-300 px-2 py-3 rounded-lg"> <NavLink
+                    to="/"
+                    className={({ isActive, isPending }) =>
+                      isPending ? "pending" : isActive ? "active text-red-500 font-normal lg:font-bold lg:px-4 p-2 lg:py-4  " : "font-normal lg:font-bold lg:px-4 p-2 lg:py-4 "
+                    }
+                  >
+                 Log Out
+                  </NavLink></div>
+                  </>
+                   :
+                   <div className="bg-blue-300 px-2 py-3 rounded-lg"><NavLink
+                   to="/login"
+                   className={({ isActive, isPending }) =>
+                     isPending ? "pending" : isActive ? "active text-red-500 font-normal lg:font-bold lg:px-4 p-2 lg:py-4  " : "font-normal lg:font-bold lg:px-4 p-2 lg:py-4 "
+                   }
+                 >
+                 Log In
+                 </NavLink></div>
+                  }
+            
                 </div>
             </div>
             

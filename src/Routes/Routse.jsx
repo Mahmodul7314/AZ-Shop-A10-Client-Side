@@ -5,6 +5,9 @@ import Home from "../Pages/Home/Home";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import MyCart from "../Pages/MyCart/MyCart";
 import ProductItem from "../components/ProductItem/ProductItem";
+import ProductDetail from "../components/ProductDetail/ProductDetail";
+import Register from "../components/Register/Register";
+import Login from "../components/Login/Login";
 
 
 const router = createBrowserRouter([
@@ -35,6 +38,20 @@ const router = createBrowserRouter([
           element:<ProductItem></ProductItem>,
    
 
+        },
+        {
+          path:"/productDetail",
+          element: <ProductDetail></ProductDetail>,
+          // loader:()=> fetch('http://localhost:5000/product')
+       
+        },
+        {
+          path:"/login",
+          element:<Login></Login>
+        },
+        {
+          path:"/register",
+          element:<Register></Register>
         }
       ]
     },
