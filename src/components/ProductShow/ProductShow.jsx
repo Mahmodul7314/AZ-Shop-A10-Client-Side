@@ -7,7 +7,7 @@ const ProductShow = ({product}) => {
 
     return (
         <div className="h-[90vh]" >
-            <div className="card h-full gap-8 bg-blue-200 pt-10 shadow-xl">
+            <div className="card lg:h-[32rem] lg:w-[26rem] gap-8 bg-blue-200 pt-10 shadow-xl">
             <figure><img className="w-64 h-60 p-6" src={photo} alt="product" /></figure>
             <div className="card-body text-center">
             <div className="text-4xl font bolg justify-center flex"> <h2 className="card-title text-center g mx-aut font-bold text-lg">{brandName}</h2></div>

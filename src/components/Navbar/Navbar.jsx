@@ -62,7 +62,9 @@ const NavLinks = <>
                 </div>
                 <div className="navbar-end w-1/2">
                   {
-                    user? <> <div> <img className="w-24-h-20 rounde-full pr-6 bg-slate-200" src={user.image} alt="" /><p>{user.email}</p></div>
+                    user? <> <div className="flex items-center justify-around lg:ga-4"> <div className="w-1/3 lg:pr-4"><img className="w-16 h-14 rounded-full pr-2" src={user.photoURL} alt="" /></div>
+                    <p className="pr-6">{user.email}</p>
+                       </div>
                     <div onClick={ handlLogout} className=" bg-blue-300 px-2 py-3 rounded-lg"> <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>
