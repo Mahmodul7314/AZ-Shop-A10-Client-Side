@@ -24,13 +24,13 @@ useEffect(()=>{
  
 
     return (
-        <div className="lg:w-full lg:flex lg:justify-between px-8 py-20">
-            <div className="grid w-4/5 lg:grid-cols-2 gap-4 md:grid-cols-2 grid-cols-1 lg:w-3/4 ">
+        <div className="w-full lg:flex lg:justify-between px-8 py-20">
+            <div className="grid lg:w-4/5 w-full lg:grid-cols-2 gap-4 md:grid-cols-2 grid-cols-1  ">
             {
                 products.map(product => <ProductShow key={product.id} product={product}></ProductShow>)
             }
             </div>
-            <div className="lg:w-1/5 lg:pl-6 space-y-4">
+            <div className="lg:w-1/5 md:w-2/4 md:mx-auto lg:pl-6 lg:space-y-4 space-y-10 lg:mt-0 mt-8">
                 
                
                 <div className="lg:w-52 border-b-2 lg:h-60 border-1.5 relative border-slate-100">

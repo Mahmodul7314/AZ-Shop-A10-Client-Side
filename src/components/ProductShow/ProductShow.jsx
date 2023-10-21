@@ -6,13 +6,13 @@ const ProductShow = ({product}) => {
     const {_id,name, brandName, price, shortDescription, rating, photo, fullDescription}= product
 
     return (
-        <div className="h-[90vh]" >
-            <div className="card lg:h-[32rem] lg:w-[26rem] gap-8 bg-blue-200 pt-10 shadow-xl">
+        <div className="lg:h-[90vh] h-full" >
+            <div className="card h-full lg:h-[32rem] lg:w-[26rem] gap-8 bg-blue-200 pt-10 shadow-xl">
             <figure><img className="w-64 h-60 p-6" src={photo} alt="product" /></figure>
             <div className="card-body text-center">
-            <div className="text-4xl font bolg justify-center flex"> <h2 className="card-title text-center g mx-aut font-bold text-lg">{brandName}</h2></div>
+            <div className="text-4xl font bold lg:justify-center justify-start lg:pl-0 pl-4 flex"> <h2 className="card-title text-center g mx-aut font-bold text-lg">{brandName}</h2></div>
                 <div className="lg:flex lg:justify-center">
-                <div className="lg:flex lg:justify-center px-4">
+                <div className="lg:flex lg:justify-center px-4 ">
                     <h2 className="card-title">{name}</h2>
                   </div>
                   </div>
@@ -43,9 +43,9 @@ const ProductShow = ({product}) => {
                
           </div>
                 <p className="text-sm font-normal">{shortDescription}</p>
-                <div className="lg:flex justify-around mt-3 ">
-                <Link to={`/productDetail`} className=" bg-blue-500 text-white w-24 rounded-sm h-8 hover:bg-slate-200 hover:text-black">Details</Link>
-                <button className=" bg-pink-500 text-white w-24  rounded-sm h-8 hover:bg-slate-200 hover:text-black">Update</button>
+                <div className="lg:flex lg:gap-1 gap-6 lg:justify-around lg:space-x-0 space-x-10 mt-3 ">
+                <Link to={`/productDetail`} className=" bg-blue-500 text-white lg:w-24 lg:px-0 px-2 rounded-lg h-10 py-2 hover:bg-slate-200 hover:text-black">Details</Link>
+                <Link className=" bg-pink-500 text-white lg:w-24  rounded-lg h-10 py-2 lg:px-0 px-2 hover:bg-slate-200 hover:text-black">Update</Link>
                 </div>
             </div>
             </div>
