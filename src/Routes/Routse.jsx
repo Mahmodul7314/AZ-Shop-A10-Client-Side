@@ -8,6 +8,7 @@ import ProductItem from "../components/ProductItem/ProductItem";
 import ProductDetail from "../components/ProductDetail/ProductDetail";
 import Register from "../components/Register/Register";
 import Login from "../components/Login/Login";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         },
         {
           path:"/addProduct",
-          element:<AddProduct></AddProduct>
+          element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
         },
         {
           path:"/productItem/:data",
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         {
           path:"/productDetail",
           element: <ProductDetail></ProductDetail>,
-          // loader:()=> fetch('http://localhost:5000/product')
+          // loader:()=> fetch(' https://az-shop-server-vf03j6kwo-mahmudul-hasans-projects-831adccd.vercel.app/product')
        
         },
         {

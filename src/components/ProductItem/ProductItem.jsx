@@ -11,7 +11,7 @@ const {data} = useParams();
 const brandName = data;
 
 useEffect(()=>{
-    fetch(`http://localhost:5000/product/${brandName}`)
+    fetch(` https://az-shop-server-vf03j6kwo-mahmudul-hasans-projects-831adccd.vercel.app/product/${brandName}`)
     .then(res => res.json())
     .then((data) => {
      setProducts(data)

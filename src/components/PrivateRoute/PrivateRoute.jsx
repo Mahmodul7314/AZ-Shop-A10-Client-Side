@@ -1,24 +1,22 @@
 
-import { Children, useContext } from 'react';
+import {children ,useContext } from 'react';
 import { AuthContext } from '../../firebase/AuthProvider';
 import { Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-
-
-
-
-const PrivateRoute =({Children}) => {
+const PrivateRoute =({children}) => {
     
 const {user,loading} = useContext(AuthContext)
   
 if(loading){
-    return <div><span className="loading loading-spinner loading-lg"></span></div>
+    return <span className="loading loading-spinner loading-lg"></span>
 }
+console.log(user)
 
 if(user){
-    return <children></children>
-}
- return <Navigate to={"/login"}></Navigate>
+    return children;
+};
+ return <Navigate to="/login"></Navigate>
 
 };
 
