@@ -18,7 +18,7 @@ useEffect(()=>{
 
     })
     .catch((error)=>{
-        Swal.fire('Oops Sorry! Not Data Found.')
+        Swal.fire("Oops Sorry! Not Data Found.")
     })
 },[brandName])
  
