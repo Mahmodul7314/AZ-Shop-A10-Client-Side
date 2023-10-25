@@ -40,7 +40,7 @@ const SingleDetail = () => {
       })
       .then((result) => {
         if (result.isConfirmed) {
-        fetch("http://localhost:5000/cartproduct",{
+        fetch("https://az-shop-server-of4yu1nn6-mahmudul-hasans-projects-831adccd.vercel.app/cartproduct",{
             method:'POST',
             headers:{
                 'content-type':'application/json'

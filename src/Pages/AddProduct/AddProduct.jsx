@@ -19,7 +19,7 @@ const AddProduct = () => {
         const product = {name,brandName,price,shortDescription,rating,fullDescription,photo}
         console.log(product)
 
-        fetch(' http://localhost:5000/product',{
+        fetch(' https://az-shop-server-of4yu1nn6-mahmudul-hasans-projects-831adccd.vercel.app/product',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

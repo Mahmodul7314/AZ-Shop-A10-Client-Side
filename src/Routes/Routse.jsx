@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         {
             path:"/mycart",
             element:<PrivateRoute><MyCart></MyCart></PrivateRoute>,
-            loader:()=> fetch("http://localhost:5000/cartproduct")
+            loader:()=> fetch("https://az-shop-server-of4yu1nn6-mahmudul-hasans-projects-831adccd.vercel.app/cartproduct")
         },
         {
           path:"mycartsigle",
@@ -49,13 +49,13 @@ const router = createBrowserRouter([
         {
           path:"/productItem/:data",
           element:<ProductItem></ProductItem>,
-          loader:()=> fetch("http://localhost:5000/product")
+          loader:()=> fetch("https://az-shop-server-of4yu1nn6-mahmudul-hasans-projects-831adccd.vercel.app/product")
    
           },
           {
             path:"/detail/:id",
             element:<PrivateRoute><SingleDetail></SingleDetail></PrivateRoute>,
-            loader:()=> fetch("http://localhost:5000/product")
+            loader:()=> fetch("https://az-shop-server-of4yu1nn6-mahmudul-hasans-projects-831adccd.vercel.app/product")
           },
       
         {
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
         {
           path:"/update/:id",
           element:<PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-          loader:({params})=> fetch(`http://localhost:5000/product/${params.id}`)
+          loader:({params})=> fetch(`https://az-shop-server-of4yu1nn6-mahmudul-hasans-projects-831adccd.vercel.app/product/${params.id}`)
         }
       ]
     },

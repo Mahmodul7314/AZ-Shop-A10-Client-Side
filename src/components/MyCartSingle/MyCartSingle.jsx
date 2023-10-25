@@ -21,7 +21,7 @@ const MyCartSingle = ({mycartproduct, mycartData,setmycartData}) => {
      if (result.isConfirmed) {
        
     
-    fetch(`http://localhost:5000/cartproduct/${_id}`,{
+    fetch(`https://az-shop-server-of4yu1nn6-mahmudul-hasans-projects-831adccd.vercel.app/cartproduct/${_id}`,{
      method:'DELETE'
     })
     .then(res => res.json())
