@@ -56,8 +56,8 @@ const Login = () => {
       }
    
   return (
-    <div className="py-10">
-      <div className="card pb-6 flex-shrink-0 lg: lg:px-8 w-1/4 mx-auto shadow-2xl bg-base-100">
+    <div className="py-10 md:px-6 lg:px-0 px-8">
+      <div className="card pb-6 flex-shrink-0 lg: px-10 lg:w-1/4 md:w-2/4 w-full  mx-auto shadow-2xl bg-base-100">
         <form onSubmit={handleLogin}>
           <div className="form-control">
             <label className="label">

@@ -1,18 +1,54 @@
-import { data } from "autoprefixer";
-import {BsCurrencyDollar} from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { BsCurrencyDollar } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const ProductShow = ({product}) => {
-    const {_id,name, brandName, price, shortDescription, rating, photo, fullDescription}= product
+const MyCartSingle = ({mycartproduct, mycartData,setmycartData}) => {
 
+  const {_id,name,brandName,price,shortDescription,rating,fullDescription,photo}= mycartproduct;
+
+  const handleDelete =_id =>{
+    console.log(_id) 
+    Swal.fire({
+     title: 'Are you sure?',
+     text: "You won't be able to revert this!",
+     icon: 'warning',
+     showCancelButton: true,
+     confirmButtonColor: '#3085d6',
+     cancelButtonColor: '#d33',
+     confirmButtonText: 'Yes, delete it!'
+   }).then((result) => {
+     if (result.isConfirmed) {
+       
+    
+    fetch(`http://localhost:5000/cartproduct/${_id}`,{
+     method:'DELETE'
+    })
+    .then(res => res.json())
+    .then(data =>{
+     console.log(data);
+     if(data.deletedCount > 0){
+         Swal.fire(
+             'Deleted!',
+             'Your Product has been deleted.',
+             'success'
+             )
+             const remaining =mycartData.filter(product=> product._id !== _id);
+            setmycartData(remaining);
+         }
+      })
+
+     }
+   })
+ }
     return (
-        <div className="lg:h-[90vh] h-full" >
-            <div className="card h-full lg:h-[32rem] lg:w-[26rem] gap-8 bg-blue-200 pt-10 shadow-xl">
-            <figure><img className="w-64 h-60 p-6" src={photo} alt="product" /></figure>
+        <div className="md:py-8 lg:py-2 py-8" >
+            <div className="card h-full md:h-full lg:h-[37rem] md:flex md:mx-auto md:w-[30rem] md:py-10 md:h-[30rem] lg:w-[24rem] gap-8 bg-blue-200 pt-10 lg:px-10 shadow-xl">
+            <figure><img className="w-70 h-64 p-6" src={photo} alt="product" /></figure>
             <div className="card-body text-center">
-            <div className="text-4xl font bold lg:justify-center justify-start lg:pl-0 pl-4 flex"> <h2 className="card-title text-center g mx-aut font-bold text-lg">{brandName}</h2></div>
+            <div className="text-4xl font bold lg:justify-center md:justify-center justify-start lg:pl-0 pl-4 flex"> <h2 className="card-title text-center g mx-aut font-bold text-lg">{brandName}</h2></div>
                 <div className="lg:flex lg:justify-center">
-                <div className="lg:flex lg:justify-center px-4 ">
+                <div className="lg:flex lg:justify-center md:flex md:justify-center px-4 ">
                     <h2 className="card-title">{name}</h2>
                   </div>
                   </div>
@@ -38,19 +74,18 @@ const ProductShow = ({product}) => {
     </svg>
     <p class="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">{rating} out of 5</p>
 </div>
-
 </p>
-               
-          </div>
-                <p className="text-sm font-normal">{shortDescription}</p>
-                <div className="lg:flex lg:gap-1 gap-6 lg:justify-around lg:space-x-0 space-x-10 mt-3 ">
-                <Link to={`/detail/${_id}`} className=" bg-blue-500 text-white lg:w-24 lg:px-0 px-2 rounded-lg h-10 py-2 hover:bg-slate-200 hover:text-black">Details</Link>
-                <Link to={`/update/${_id}`} className=" bg-pink-500 text-white lg:w-24  rounded-lg h-10 py-2 lg:px-0 px-2 hover:bg-slate-200 hover:text-black">Update</Link>
-                </div>
+    </div>
+        <p className="text-sm font-normal">{shortDescription}</p>
+           <div className="lg:flex lg:gap-1 gap-6 lg:justify-around lg:space-x-0 space-x-10 lg:mt-3 mt-0 ">
+            </div>
+            </div>
+            <div className='flex justify-center'>
+            <button onClick={()=>handleDelete(_id)} className=" btn btn-error lg:mb-0 md:mb-0 mb-8  hover:bg-slate-200 hover:text-black">Delete</button>
             </div>
             </div>
         </div>
     );
 };
 
-export default ProductShow;
+export default MyCartSingle;

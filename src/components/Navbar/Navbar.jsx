@@ -52,7 +52,7 @@ const NavLinks = <>
                       {NavLinks}
                     </ul>
                   </div>
-                  <a className="btn btn-ghost normal-case text-xl"><img className="w-40 h-24" src="https://i.ibb.co/rKBwLtW/Color-logo-no-background.png" alt="" /></a>
+                  <a className=" normal-case text-xl"><img className="w-40 h-24" src="https://i.ibb.co/rKBwLtW/Color-logo-no-background.png" alt="" /></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                   <ul className="menu menu-horizontal px-1">

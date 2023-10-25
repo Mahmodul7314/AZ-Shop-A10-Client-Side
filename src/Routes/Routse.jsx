@@ -5,10 +5,16 @@ import Home from "../Pages/Home/Home";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import MyCart from "../Pages/MyCart/MyCart";
 import ProductItem from "../components/ProductItem/ProductItem";
-import ProductDetail from "../components/ProductDetail/ProductDetail";
 import Register from "../components/Register/Register";
 import Login from "../components/Login/Login";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import SingleDetail from "../components/singleDetail/SingleDetail";
+import UpdateProduct from "../components/UpdateProduct/UpdateProduct";
+import MyCartSingle from "../components/MyCartSingle/MyCartSingle";
+
+
+
+
 
 
 const router = createBrowserRouter([
@@ -24,11 +30,17 @@ const router = createBrowserRouter([
         },
         {
             path:"/addproduct",
-            element:<AddProduct></AddProduct>
+            element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
         },
         {
             path:"/mycart",
-            element:<MyCart></MyCart>
+            element:<PrivateRoute><MyCart></MyCart></PrivateRoute>,
+            loader:()=> fetch("http://localhost:5000/cartproduct")
+        },
+        {
+          path:"mycartsigle",
+          element:<MyCartSingle></MyCartSingle>
+
         },
         {
           path:"/addProduct",
@@ -37,15 +49,15 @@ const router = createBrowserRouter([
         {
           path:"/productItem/:data",
           element:<ProductItem></ProductItem>,
+          loader:()=> fetch("http://localhost:5000/product")
    
-
-        },
-        {
-          path:"/productDetail",
-          element: <ProductDetail></ProductDetail>,
-          // loader:()=> fetch(' https://az-shop-server-vf03j6kwo-mahmudul-hasans-projects-831adccd.vercel.app/product')
-       
-        },
+          },
+          {
+            path:"/detail/:id",
+            element:<PrivateRoute><SingleDetail></SingleDetail></PrivateRoute>,
+            loader:()=> fetch("http://localhost:5000/product")
+          },
+      
         {
           path:"/login",
           element:<Login></Login>
@@ -53,6 +65,11 @@ const router = createBrowserRouter([
         {
           path:"/register",
           element:<Register></Register>
+        },
+        {
+          path:"/update/:id",
+          element:<PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+          loader:({params})=> fetch(`http://localhost:5000/product/${params.id}`)
         }
       ]
     },

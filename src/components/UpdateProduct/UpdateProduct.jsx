@@ -1,52 +1,52 @@
-/* eslint-disable no-unused-vars */
-
-import BrandCard from './../../components/BrandCard/BrandCard';
-import Swal from 'sweetalert2'
-const AddProduct = () => {
-
-    const handleAddProduct =e =>{
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const brandName = form.brandName.value;
-        const price = form.price.value;
-        const shortDescription = form.shortDescription.value;
-        const rating = form.rating.value;
-        const fullDescription = form.fullDescription.value;
-        const photo = form.photo.value;
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
-        const product = {name,brandName,price,shortDescription,rating,fullDescription,photo}
-        console.log(product)
+const UpdateProduct = () => {
+const allData = useLoaderData();
+const {_id,name,brandName,price,shortDescription,rating,fullDescription,photo} = allData;
 
-        fetch(' http://localhost:5000/product',{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
-            },
-            body:JSON.stringify(product)
-        })
-        .then(res => res.json())
-        .then(data =>{
-           if(data.insertedId){
+const handleUpdate =event=>{
+ event.preventDefault ();
+ const form = event.target;
+ const name = form.name.value;
+ const brandName = form.brandName.value;
+ const price = form.price.value;
+ const shortDescription = form.shortDescription.value;
+ const rating = form.rating.value;
+ const fullDescription = form.fullDescription.value;
+ const photo = form.photo.value;
+
+const updateProduct = {name,brandName,price,shortDescription,rating,fullDescription,photo}
+ console.log(updateProduct)
+
+      // data to the server
+      fetch(`http://localhost:5000/product/${_id}`,{
+        method:'PUT',
+        headers:{
+            'content-type':'application/json'
+        },
+        body:JSON.stringify(updateProduct )
+       })
+       .then(res=> res.json())
+        .then(data => {
+           if(data.modifiedCount> 0){
             Swal.fire({
                 title: 'Sucess!',
-                text: 'Product Added Successfully',
+                text: 'Product Updated Successfully',
                 icon: 'success',
-                confirmButtonText: 'Ok'
+                confirmButtonText:"Ok"
               })
            }
         })
-        
 
-
-
-    }
+}
 
 
     return (
-        <div className="lg:my-20 my-6 lg:px-8 px-2">
-             <form onSubmit={handleAddProduct}>
+        <div className="py-20 pb-10 px-20">
+            <h2 className="text-center py-8 text-bold text-2xl">Update Product</h2>
+             <form onSubmit={handleUpdate} >
                 {/* form name and brand row */}
                 <div className="md:flex mb-8">
                 <div className="form-control md:w-1/2">
@@ -125,12 +125,12 @@ const AddProduct = () => {
              </div>
          </div>
 
-         <input type="submit" value="Add Product" className="btn bg-blue-500 text-white btn-block" />
+         <input type="submit" value="Add Product" className="btn bg-red-500 text-white btn-block" />
             </form>
          
-
+            
         </div>
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;

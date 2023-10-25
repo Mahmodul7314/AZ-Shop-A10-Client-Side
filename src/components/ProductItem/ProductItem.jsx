@@ -1,29 +1,25 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import ProductShow from "../ProductShow/ProductShow";
 import Swal from "sweetalert2";
 
 
 const ProductItem = () => {
 const [products, setProducts]= useState([]);
+const allData = useLoaderData();
 const {data} = useParams();
 const brandName = data;
+// console.log(allData)
+// console.log(brandName)
 
 useEffect(()=>{
-    fetch(` https://az-shop-server-vf03j6kwo-mahmudul-hasans-projects-831adccd.vercel.app/product/${brandName}`)
-    .then(res => res.json())
-    .then((data) => {
-     setProducts(data)
+    const findDataCard = allData.filter(dataCard=>dataCard.brandName == brandName);
+    setProducts(findDataCard);
 
-    })
-    .catch((error)=>{
-        Swal.fire("Oops Sorry! Not Data Found.")
-    })
-},[brandName])
- 
-
-    return (
+},[])
+  
+ return (
         <div className="w-full lg:flex lg:justify-between px-8 py-20">
             <div className="grid lg:w-4/5 w-full lg:grid-cols-2 gap-4 md:grid-cols-2 grid-cols-1  ">
             {

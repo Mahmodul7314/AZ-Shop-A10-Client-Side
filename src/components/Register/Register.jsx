@@ -18,8 +18,6 @@ const Register = () => {
         const password =form.get("password");
         // console.log(name,photo,email,password)
 
-        //errorMessage
-        e.target.reset();
 
          //conditional password setup
       if(password.length<6){
@@ -38,8 +36,9 @@ const Register = () => {
                 'Thanks!',
                 'Your Registraion is successful!',
                 navigate('/')
-               
+              
               )
+              e.target.reset();
          })
          .then(error =>{
             console.error(error)
