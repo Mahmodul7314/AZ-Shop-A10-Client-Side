@@ -11,7 +11,7 @@ const {user,loading} = useContext(AuthContext)
 if(loading){
     return <span className="loading loading-spinner loading-lg"></span>
 }
-console.log(user)
+// console.log(user)
 
 if(user){
     return children;
